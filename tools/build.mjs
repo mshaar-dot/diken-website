@@ -9,22 +9,12 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://dikendelivery.com';
 const UPDATED = '2026-09-22';
 
-// Top bar: two quick links. Side menu: every page of the site, in site order; Terms & Conditions live in the side menu and the footer.
+// Top bar: every page side by side, exactly like the original site, with Terms & Conditions last after About.
 const TOP = {
-  en: [['delivery', 'Delivery'], ['about', 'About']],
-  ar: [['delivery', 'التوصيل'], ['about', 'من نحن']],
-};
-const PAGES = {
-  en: [
-    ['index', 'Home'], ['delivery', 'Delivery &amp; Logistics'], ['distribution', 'Distribution &amp; Agencies'],
-    ['motorcycles', 'Motorcycles'], ['investments', 'Investments'], ['impact', 'Impact'],
-    ['technology', 'Technology'], ['about', 'About'], ['contact', 'Contact'],
-  ],
-  ar: [
-    ['index', 'الرئيسية'], ['delivery', 'التوصيل والخدمات اللوجستية'], ['distribution', 'التوزيع والوكالات'],
-    ['motorcycles', 'الدراجات النارية'], ['investments', 'الاستثمارات'], ['impact', 'الأثر'],
-    ['technology', 'التقنية'], ['about', 'من نحن'], ['contact', 'تواصل معنا'],
-  ],
+  en: [['delivery', 'Delivery'], ['distribution', 'Distribution'], ['motorcycles', 'Motorcycles'], ['investments', 'Investments'],
+       ['impact', 'Impact'], ['technology', 'Technology'], ['about', 'About'], ['terms', 'Terms &amp; Conditions']],
+  ar: [['delivery', 'التوصيل'], ['distribution', 'التوزيع'], ['motorcycles', 'الدراجات'], ['investments', 'الاستثمارات'],
+       ['impact', 'الأثر'], ['technology', 'التقنية'], ['about', 'من نحن'], ['terms', 'الشروط والأحكام']],
 };
 
 const T = {
@@ -39,7 +29,7 @@ const T = {
     coLinks: [['impact', 'Impact'], ['technology', 'Technology'], ['about', 'About'], ['contact', 'Contact']],
     addr1: 'Amman: Abu Alanda, Wadi Saqra, Shafa Badran', addr2: 'Irbid and Zarqa',
     copy: 'Diken Bros. All rights reserved.', terms: 'Terms &amp; Conditions', privacy: 'Privacy Policy',
-    legal: 'Legal', allPages: 'All pages', close: 'Close menu',
+    legal: 'Legal',
   },
   ar: {
     dir: 'rtl', skip: 'تخطي إلى المحتوى', home: 'الصفحة الرئيسية لشركة الدكن', menu: 'القائمة', main: 'التنقل الرئيسي',
@@ -52,7 +42,7 @@ const T = {
     coLinks: [['impact', 'الأثر'], ['technology', 'التقنية'], ['about', 'من نحن'], ['contact', 'تواصل معنا']],
     addr1: 'عمّان: أبو علندا، وادي صقرة، شفا بدران', addr2: 'إربد والزرقاء',
     copy: 'شركة الدكن. جميع الحقوق محفوظة.', terms: 'الشروط والأحكام', privacy: 'سياسة الخصوصية',
-    legal: 'قانوني', allPages: 'كل الصفحات', close: 'إغلاق القائمة',
+    legal: 'قانوني',
   },
 };
 
@@ -104,9 +94,7 @@ function head(lang, name, meta, base) {
 function nav(lang, name, base) {
   const t = T[lang];
   const altHref = lang === 'ar' ? `../${name}.html` : `ar/${name}.html`;
-  const cur = (slug) => (slug === name ? ' aria-current="page"' : '');
-  const top = TOP[lang].map(([slug, label]) => `<a href="${slug}.html"${cur(slug)}>${label}</a>`).join('');
-  const pages = PAGES[lang].map(([slug, label]) => `<li><a href="${slug}.html"${cur(slug)}>${label}</a></li>`).join('\n      ');
+  const links = TOP[lang].map(([slug, label]) => `<a href="${slug}.html"${slug === name ? ' aria-current="page"' : ''}>${label}</a>`).join('');
   return `<body>
 <a class="skip" href="#main">${t.skip}</a>
 <header class="nav">
@@ -115,33 +103,14 @@ function nav(lang, name, base) {
       <img src="${base}assets/brand/diken-d-512.png" alt="" width="36" height="36">
       <span>DIKEN<small>${t.brandSmall}</small></span>
     </a>
-    <nav class="navlinks" aria-label="${t.main}">
-      ${top}
+    <nav class="navlinks" id="navlinks" aria-label="${t.main}">
+      ${links}
       <a class="lang" href="${altHref}" lang="${t.langCode}" hreflang="${t.langCode}">${t.lang}</a>
       <a class="btn primary" href="contact.html">${t.contact}</a>
     </nav>
-    <button class="navtoggle" type="button" aria-expanded="false" aria-controls="sidemenu" aria-label="${t.menu}"><i class="ph ph-list" aria-hidden="true"></i><span>${t.menu}</span></button>
+    <button class="navtoggle" type="button" aria-expanded="false" aria-controls="navlinks" aria-label="${t.menu}"><i class="ph ph-list" aria-hidden="true"></i></button>
   </div>
 </header>
-<div class="scrim"></div>
-<aside class="sidemenu" id="sidemenu" role="dialog" aria-modal="true" aria-label="${t.menu}" inert>
-  <div class="sidemenu-head">
-    <span class="patch red">${t.allPages}</span>
-    <button class="sideclose" type="button" aria-label="${t.close}"><i class="ph ph-x" aria-hidden="true"></i></button>
-  </div>
-  <nav aria-label="${t.allPages}">
-    <ol class="sidelinks" role="list">
-      ${pages}
-    </ol>
-  </nav>
-  <div class="sidemenu-foot">
-    <div class="sidelegal"><a href="terms.html"${cur('terms')}>${t.terms}</a><a href="privacy.html"${cur('privacy')}>${t.privacy}</a></div>
-    <div class="cta">
-      <a class="btn primary" href="contact.html">${t.contact}</a>
-      <a class="btn ghost" href="${altHref}" lang="${t.langCode}" hreflang="${t.langCode}">${t.lang}</a>
-    </div>
-  </div>
-</aside>
 <main id="main">
 `;
 }

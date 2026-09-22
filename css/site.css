@@ -395,68 +395,11 @@ html.review .page-head { min-height: 560px; }
 .navlinks .lang:hover { border-color: #fff; }
 @media (max-width: 1023px) { .navlinks .lang { border: 0; border-bottom: 1px solid var(--line); border-radius: 0; padding: 16px 4px; margin: 0; } }
 
-/* ────────────────────────────────────────────────────────────────────────
-   Additions to the original stylesheet: quick-link top bar, side menu with
-   every page, legal pages. Same tokens, same "Rider's Jacket" language.
-   ──────────────────────────────────────────────────────────────────────── */
-
-/* Top bar: three quick links on desktop; the side menu carries everything else. */
-.navtoggle { display: inline-flex; gap: 8px; width: auto; min-width: 44px; padding: 0 14px; font-size: 14.5px; font-weight: 600; font-family: inherit; }
-.navtoggle .ph { font-size: 22px; }
-.navtoggle span { white-space: nowrap; }
-.navtoggle[aria-expanded="true"] { border-color: #fff; background: rgba(255,255,255,0.06); }
-.navlinks .btn { margin-inline-start: 8px; }
-@media (max-width: 1023px) {
-  .navlinks { display: none; }
-  .navtoggle { padding: 0; }
-  .navtoggle span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-}
-
-/* Side menu: a jacket panel that slides in from the end edge and lists every page. */
-.scrim { position: fixed; inset: 0; z-index: 70; background: rgba(8,8,10,0.6); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 240ms, visibility 0s 240ms; }
-.scrim.open { opacity: 1; visibility: visible; pointer-events: auto; transition-delay: 0s; }
-.sidemenu {
-  position: fixed; top: 0; bottom: 0; inset-inline-end: 0; z-index: 80;
-  width: min(400px, 100%);
-  display: grid; grid-template-rows: auto 1fr auto;
-  background: var(--ink-2); border-inline-start: 1px solid var(--line);
-  box-shadow: inset 0 3px 0 0 var(--red), -24px 0 60px rgba(0,0,0,0.45);
-  transform: translateX(100%); visibility: hidden;
-  transition: transform 320ms var(--ease-out), visibility 0s 320ms;
-  overflow: hidden;
-}
-[dir="rtl"] .sidemenu { transform: translateX(-100%); box-shadow: inset 0 3px 0 0 var(--red), 24px 0 60px rgba(0,0,0,0.45); }
-.sidemenu.open { transform: none; visibility: visible; transition-delay: 0s; }
-.sidemenu-head { display: flex; align-items: center; justify-content: space-between; height: var(--nav-h); padding: 0 24px; border-bottom: 1px solid var(--line); }
-.sidemenu-head .patch { font-size: 12.5px; }
-.sideclose { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: var(--radius); background: transparent; color: var(--fg); border: 1px solid var(--line-strong); font-size: 22px; cursor: pointer; }
-.sideclose:hover { border-color: #fff; }
-.sidemenu > nav { overflow-y: auto; overscroll-behavior: contain; }
-.sidelinks { counter-reset: page; padding: 6px 0; }
-.sidelinks a { position: relative; display: flex; align-items: baseline; gap: 16px; padding: 15px 24px; font-size: 19px; font-weight: 600; color: var(--fg-2); border-bottom: 1px solid var(--line); transition: color 150ms ease, background-color 150ms ease; }
-.sidelinks a::before { counter-increment: page; content: counter(page, decimal-leading-zero); font-size: 12px; font-weight: 800; letter-spacing: 0.08em; color: var(--red); font-variant-numeric: tabular-nums; direction: ltr; min-width: 22px; }
-.sidelinks a:hover { color: #fff; background: rgba(255,255,255,0.04); }
-.sidelinks a[aria-current="page"] { color: #fff; }
-.sidelinks a[aria-current="page"]::after { content: ""; position: absolute; inset-inline-start: 0; top: 12px; bottom: 12px; width: 3px; background: var(--red); }
-.sidelinks a:focus-visible, .sidelegal a:focus-visible { outline-offset: -4px; }
-.sidemenu-foot { padding: 18px 24px 26px; border-top: 1px solid var(--line); display: grid; gap: 16px; }
-.sidelegal { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 14px; color: var(--fg-2); }
-.sidelegal a:hover, .sidelegal a[aria-current="page"] { color: #fff; }
-.sidemenu-foot .cta { display: flex; gap: 12px; }
-.sidemenu-foot .cta .btn { flex: 1; }
-@media (max-height: 760px) { .sidemenu-head { height: 56px; } .sidelinks a { padding-block: 11px; font-size: 17px; } .sidemenu-foot { padding: 12px 24px 16px; gap: 10px; } }
-@media (prefers-reduced-motion: reduce) { .sidemenu, .scrim { transition: none; } }
-html { scrollbar-gutter: stable; }
-body.nav-open { overflow: hidden; }
-
-/* Footer legal links */
+/* ── Additions to the original stylesheet: footer legal links, contact-form status, legal pages. ── */
 footer .base nav { display: flex; gap: 20px; }
 footer .base nav a:hover { color: #fff; }
-
-/* Contact form: status message from the mailto hand-off */
 form.contact .status.show { display: block; background: rgba(202,255,0,0.1); border: 1px solid rgba(202,255,0,0.4); }
 
-/* Legal pages: sticky contents panel beside numbered sections. */
 .legal-grid { display: grid; grid-template-columns: 260px 1fr; gap: clamp(32px, 5vw, 80px); align-items: start; }
 .toc { position: sticky; top: calc(var(--nav-h) + 24px); display: grid; gap: 4px; padding: 20px; }
 .toc b { font-size: 12.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-3); margin-bottom: 8px; }

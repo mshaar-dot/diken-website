@@ -1,4 +1,4 @@
-/* Diken Bros — site behaviour: mobile nav, scroll reveals, KPI count-up, mailto contact form. */
+/* Diken Bros — site behaviour: mobile nav drawer, scroll reveals, KPI count-up, mailto contact form. */
 (function () {
   'use strict';
   var doc = document.documentElement;
@@ -6,47 +6,20 @@
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var isAr = doc.lang === 'ar';
 
-  /* Side menu: the button in the top bar opens a panel listing every page. */
+  /* Mobile navigation drawer, as on the original site: the button opens the same links stacked. */
   var toggle = document.querySelector('.navtoggle');
-  var menu = document.getElementById('sidemenu');
-  var scrim = document.querySelector('.scrim');
-  var closeBtn = menu && menu.querySelector('.sideclose');
-  var isOpen = false;
-  var pageParts = ['header.nav', 'main', 'footer'].map(function (s) { return document.querySelector(s); }).filter(Boolean);
-  function setMenu(open, restoreFocus) {
-    if (!menu || open === isOpen) return;
-    isOpen = open;
-    menu.classList.toggle('open', open);
-    if (open) menu.removeAttribute('inert'); else menu.setAttribute('inert', '');
-    /* The rest of the page is inert while the menu is open, so it is a true modal for keyboard and screen-reader users. */
-    pageParts.forEach(function (el) { if (open) el.setAttribute('inert', ''); else el.removeAttribute('inert'); });
+  var links = document.getElementById('navlinks');
+  function setNav(open) {
+    links.setAttribute('data-open', String(open));
     toggle.setAttribute('aria-expanded', String(open));
-    if (scrim) scrim.classList.toggle('open', open);
-    document.body.classList.toggle('nav-open', open);
-    if (open) {
-      var first = menu.querySelector('.sidelinks a[aria-current="page"]') || menu.querySelector('.sidelinks a') || closeBtn;
-      first.focus({ preventScroll: true });
-      if (first.scrollIntoView) first.scrollIntoView({ block: 'nearest' });
-    } else if (restoreFocus) {
-      toggle.focus();
-    }
+    toggle.innerHTML = open ? '<i class="ph ph-x" aria-hidden="true"></i>' : '<i class="ph ph-list" aria-hidden="true"></i>';
+    document.body.style.overflow = open ? 'hidden' : '';
   }
-  if (toggle && menu) {
-    toggle.addEventListener('click', function () { setMenu(!isOpen, false); });
-    if (closeBtn) closeBtn.addEventListener('click', function () { setMenu(false, true); });
-    if (scrim) scrim.addEventListener('click', function () { setMenu(false, true); });
-    menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false, false); });
-    document.addEventListener('keydown', function (e) {
-      if (!isOpen) return;
-      if (e.key === 'Escape') { setMenu(false, true); return; }
-      if (e.key === 'Tab') {
-        var items = menu.querySelectorAll('a[href], button:not([disabled])');
-        var firstEl = items[0], lastEl = items[items.length - 1];
-        if (!menu.contains(document.activeElement)) { e.preventDefault(); firstEl.focus(); }
-        else if (e.shiftKey && document.activeElement === firstEl) { e.preventDefault(); lastEl.focus(); }
-        else if (!e.shiftKey && document.activeElement === lastEl) { e.preventDefault(); firstEl.focus(); }
-      }
-    });
+  if (toggle && links) {
+    toggle.addEventListener('click', function () { setNav(links.getAttribute('data-open') !== 'true'); });
+    links.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setNav(false); }); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && links.getAttribute('data-open') === 'true') { setNav(false); toggle.focus(); } });
+    window.matchMedia('(min-width: 1024px)').addEventListener('change', function (m) { if (m.matches) setNav(false); });
   }
 
   /* Scroll reveals */
