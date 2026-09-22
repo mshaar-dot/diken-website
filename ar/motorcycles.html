@@ -39,14 +39,14 @@
     </div>
   </div>
 </header>
-<div class="scrim" hidden></div>
-<aside class="sidemenu" id="sidemenu" aria-label="كل الصفحات" inert>
+<div class="scrim"></div>
+<aside class="sidemenu" id="sidemenu" role="dialog" aria-modal="true" aria-label="القائمة" inert>
   <div class="sidemenu-head">
     <span class="eyebrow">كل الصفحات</span>
     <button class="sideclose" type="button" aria-label="إغلاق القائمة"><i class="ph ph-x" aria-hidden="true"></i></button>
   </div>
   <nav aria-label="كل الصفحات">
-    <ol class="sidelinks">
+    <ol class="sidelinks" role="list">
       <li><a href="index.html">الرئيسية</a></li>
       <li><a href="delivery.html">التوصيل والخدمات اللوجستية</a></li>
       <li><a href="distribution.html">التوزيع والوكالات</a></li>
@@ -59,7 +59,7 @@
     </ol>
   </nav>
   <div class="sidemenu-foot">
-    <nav class="sidelegal" aria-label="قانوني"><a href="terms.html">الشروط والأحكام</a><a href="privacy.html">سياسة الخصوصية</a></nav>
+    <div class="sidelegal"><a href="terms.html">الشروط والأحكام</a><a href="privacy.html">سياسة الخصوصية</a></div>
     <div class="actions">
       <a class="btn primary" href="contact.html">تواصل معنا</a>
       <a class="btn ghost" href="../motorcycles.html" lang="en" hreflang="en">English</a>

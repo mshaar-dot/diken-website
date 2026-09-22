@@ -12,17 +12,21 @@
   var scrim = document.querySelector('.scrim');
   var closeBtn = menu && menu.querySelector('.sideclose');
   var isOpen = false;
+  var pageParts = ['header.nav', 'main', 'footer'].map(function (s) { return document.querySelector(s); }).filter(Boolean);
   function setMenu(open, restoreFocus) {
     if (!menu || open === isOpen) return;
     isOpen = open;
     menu.classList.toggle('open', open);
     if (open) menu.removeAttribute('inert'); else menu.setAttribute('inert', '');
+    /* The rest of the page is inert while the menu is open, so it is a true modal for keyboard and screen-reader users. */
+    pageParts.forEach(function (el) { if (open) el.setAttribute('inert', ''); else el.removeAttribute('inert'); });
     toggle.setAttribute('aria-expanded', String(open));
-    if (scrim) scrim.hidden = !open;
+    if (scrim) scrim.classList.toggle('open', open);
     document.body.classList.toggle('nav-open', open);
     if (open) {
-      var first = menu.querySelector('.sidelinks a[aria-current="page"]') || menu.querySelector('.sidelinks a');
-      (first || closeBtn).focus({ preventScroll: true });
+      var first = menu.querySelector('.sidelinks a[aria-current="page"]') || menu.querySelector('.sidelinks a') || closeBtn;
+      first.focus({ preventScroll: true });
+      if (first.scrollIntoView) first.scrollIntoView({ block: 'nearest' });
     } else if (restoreFocus) {
       toggle.focus();
     }

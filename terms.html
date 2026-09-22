@@ -39,14 +39,14 @@
     </div>
   </div>
 </header>
-<div class="scrim" hidden></div>
-<aside class="sidemenu" id="sidemenu" aria-label="All pages" inert>
+<div class="scrim"></div>
+<aside class="sidemenu" id="sidemenu" role="dialog" aria-modal="true" aria-label="Menu" inert>
   <div class="sidemenu-head">
     <span class="eyebrow">All pages</span>
     <button class="sideclose" type="button" aria-label="Close menu"><i class="ph ph-x" aria-hidden="true"></i></button>
   </div>
   <nav aria-label="All pages">
-    <ol class="sidelinks">
+    <ol class="sidelinks" role="list">
       <li><a href="index.html">Home</a></li>
       <li><a href="delivery.html">Delivery &amp; Logistics</a></li>
       <li><a href="distribution.html">Distribution &amp; Agencies</a></li>
@@ -59,7 +59,7 @@
     </ol>
   </nav>
   <div class="sidemenu-foot">
-    <nav class="sidelegal" aria-label="Legal"><a href="terms.html" aria-current="page">Terms &amp; Conditions</a><a href="privacy.html">Privacy Policy</a></nav>
+    <div class="sidelegal"><a href="terms.html" aria-current="page">Terms &amp; Conditions</a><a href="privacy.html">Privacy Policy</a></div>
     <div class="actions">
       <a class="btn primary" href="contact.html">Contact us</a>
       <a class="btn ghost" href="ar/terms.html" lang="ar" hreflang="ar">العربية</a>

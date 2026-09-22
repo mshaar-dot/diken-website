@@ -123,19 +123,19 @@ function nav(lang, name, base) {
     </div>
   </div>
 </header>
-<div class="scrim" hidden></div>
-<aside class="sidemenu" id="sidemenu" aria-label="${t.allPages}" inert>
+<div class="scrim"></div>
+<aside class="sidemenu" id="sidemenu" role="dialog" aria-modal="true" aria-label="${t.menu}" inert>
   <div class="sidemenu-head">
     <span class="eyebrow">${t.allPages}</span>
     <button class="sideclose" type="button" aria-label="${t.close}"><i class="ph ph-x" aria-hidden="true"></i></button>
   </div>
   <nav aria-label="${t.allPages}">
-    <ol class="sidelinks">
+    <ol class="sidelinks" role="list">
       ${pages}
     </ol>
   </nav>
   <div class="sidemenu-foot">
-    <nav class="sidelegal" aria-label="${t.legal}"><a href="terms.html"${cur('terms')}>${t.terms}</a><a href="privacy.html"${cur('privacy')}>${t.privacy}</a></nav>
+    <div class="sidelegal"><a href="terms.html"${cur('terms')}>${t.terms}</a><a href="privacy.html"${cur('privacy')}>${t.privacy}</a></div>
     <div class="actions">
       <a class="btn primary" href="contact.html">${t.contact}</a>
       <a class="btn ghost" href="${altHref}" lang="${t.langCode}" hreflang="${t.langCode}">${t.lang}</a>
