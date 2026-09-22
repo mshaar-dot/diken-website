@@ -1,0 +1,12 @@
+{
+  "name": "diken-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Diken Bros corporate website (static, bilingual EN/AR).",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "check": "node tools/check.mjs",
+    "serve": "python -m http.server 8790"
+  }
+}

@@ -1,0 +1,201 @@
+// Builds the site: wraps every fragment in src/pages/<lang>/*.html with the shared
+// shell (head, nav, footer) and writes finished pages to the repo root and ar/.
+// Also writes sitemap.xml. No dependencies. Run: node tools/build.mjs
+import { readdirSync, readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+const SITE = 'https://dikendelivery.com';
+const UPDATED = '2026-09-22';
+
+const NAV = {
+  en: [
+    ['delivery', 'Delivery'], ['distribution', 'Distribution'], ['motorcycles', 'Motorcycles'],
+    ['investments', 'Investments'], ['impact', 'Impact'], ['technology', 'Technology'], ['about', 'About'],
+  ],
+  ar: [
+    ['delivery', 'التوصيل'], ['distribution', 'التوزيع'], ['motorcycles', 'الدراجات'],
+    ['investments', 'الاستثمارات'], ['impact', 'الأثر'], ['technology', 'التقنية'], ['about', 'من نحن'],
+  ],
+};
+
+const T = {
+  en: {
+    dir: 'ltr', skip: 'Skip to content', home: 'Diken Bros home', menu: 'Menu', main: 'Main',
+    contact: 'Contact us', lang: 'العربية', langCode: 'ar',
+    brandSmall: 'BROS · SINCE 1990',
+    footerTag: 'Distribution, motorcycles, delivery and investments. Amman, Irbid and Zarqa.',
+    footerAlt: 'شركة الدكن',
+    divisions: 'Divisions', company: 'Company', contactH: 'Contact',
+    divLinks: [['delivery', 'Delivery & Logistics'], ['distribution', 'Distribution & Agencies'], ['motorcycles', 'Motorcycles'], ['investments', 'Investments']],
+    coLinks: [['impact', 'Impact'], ['technology', 'Technology'], ['about', 'About'], ['contact', 'Contact']],
+    addr1: 'Amman: Abu Alanda, Wadi Saqra, Shafa Badran', addr2: 'Irbid and Zarqa',
+    copy: 'Diken Bros. All rights reserved.', terms: 'Terms of Use', privacy: 'Privacy Policy',
+    legal: 'Legal',
+  },
+  ar: {
+    dir: 'rtl', skip: 'تخطي إلى المحتوى', home: 'الصفحة الرئيسية لشركة الدكن', menu: 'القائمة', main: 'الرئيسية',
+    contact: 'تواصل معنا', lang: 'English', langCode: 'en',
+    brandSmall: 'الدكن · منذ 1990',
+    footerTag: 'التوزيع، الدراجات النارية، التوصيل والاستثمارات. عمّان وإربد والزرقاء.',
+    footerAlt: 'Diken Bros',
+    divisions: 'الأقسام', company: 'الشركة', contactH: 'تواصل',
+    divLinks: [['delivery', 'التوصيل والخدمات اللوجستية'], ['distribution', 'التوزيع والوكالات'], ['motorcycles', 'الدراجات النارية'], ['investments', 'الاستثمارات']],
+    coLinks: [['impact', 'الأثر'], ['technology', 'التقنية'], ['about', 'من نحن'], ['contact', 'تواصل معنا']],
+    addr1: 'عمّان: أبو علندا، وادي صقرة، شفا بدران', addr2: 'إربد والزرقاء',
+    copy: 'شركة الدكن. جميع الحقوق محفوظة.', terms: 'شروط الاستخدام', privacy: 'سياسة الخصوصية',
+    legal: 'قانوني',
+  },
+};
+
+const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+
+function pageUrl(lang, name) {
+  const file = name === 'index' ? '' : `${name}.html`;
+  return lang === 'ar' ? `${SITE}/ar/${file}` : `${SITE}/${file}`;
+}
+
+function head(lang, name, meta, base) {
+  const t = T[lang];
+  const alt = lang === 'ar' ? 'en' : 'ar';
+  const og = meta.og ? `${SITE}/${meta.og}` : `${SITE}/assets/img/hero-lineup-1200.jpg`;
+  const ld = {
+    '@context': 'https://schema.org', '@type': 'Organization', name: 'Diken Bros', alternateName: 'شركة الدكن',
+    url: SITE + '/', logo: `${SITE}/assets/brand/diken-d-512.png`, foundingDate: '1990',
+    telephone: '+962-6-416-6660', email: 'info@dikenbros.com',
+    address: { '@type': 'PostalAddress', addressLocality: 'Amman', addressCountry: 'JO' },
+  };
+  return `<!doctype html>
+<html lang="${lang}" dir="${t.dir}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${esc(meta.title)}</title>
+<meta name="description" content="${esc(meta.description)}">
+<link rel="canonical" href="${pageUrl(lang, name)}">
+<link rel="alternate" hreflang="${lang}" href="${pageUrl(lang, name)}">
+<link rel="alternate" hreflang="${alt}" href="${pageUrl(alt, name)}">
+<link rel="alternate" hreflang="x-default" href="${pageUrl('en', name)}">
+<meta property="og:title" content="${esc(meta.title)}">
+<meta property="og:description" content="${esc(meta.description)}">
+<meta property="og:image" content="${og}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="${lang === 'ar' ? 'ar_JO' : 'en_GB'}">
+<meta name="theme-color" content="#0b0b0c">
+<link rel="icon" type="image/png" href="${base}assets/brand/favicon-64.png">
+<link rel="apple-touch-icon" href="${base}assets/brand/diken-d-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="${base}css/site.css">
+<script type="application/ld+json">${JSON.stringify(ld)}</script>
+</head>`;
+}
+
+function nav(lang, name, base) {
+  const t = T[lang];
+  const altHref = lang === 'ar' ? `../${name}.html` : `ar/${name}.html`;
+  const links = NAV[lang].map(([slug, label]) =>
+    `<a href="${slug}.html"${slug === name ? ' aria-current="page"' : ''}>${label}</a>`).join('');
+  return `<body>
+<a class="skip" href="#main">${t.skip}</a>
+<header class="nav" id="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="${t.home}">
+      <img src="${base}assets/brand/diken-d-512.png" alt="" width="40" height="40">
+      <span class="brand-text"><b>DIKEN</b><small>${t.brandSmall}</small></span>
+    </a>
+    <nav class="navlinks" id="navlinks" aria-label="${t.main}">
+      ${links}
+      <a class="lang" href="${altHref}" lang="${t.langCode}" hreflang="${t.langCode}">${t.lang}</a>
+      <a class="btn primary small" href="contact.html">${t.contact}</a>
+    </nav>
+    <button class="navtoggle" type="button" aria-expanded="false" aria-controls="navlinks" aria-label="${t.menu}"><i class="ph ph-list" aria-hidden="true"></i></button>
+  </div>
+</header>
+<main id="main">
+`;
+}
+
+function footer(lang, base) {
+  const t = T[lang];
+  const list = (arr) => arr.map(([s, l]) => `<li><a href="${s}.html">${l}</a></li>`).join('');
+  return `</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html" aria-label="${t.home}">
+          <img src="${base}assets/brand/diken-d-512.png" alt="" width="40" height="40">
+          <span class="brand-text"><b>DIKEN</b><small>${t.brandSmall}</small></span>
+        </a>
+        <p>${t.footerTag}</p>
+        <p class="alt" ${lang === 'ar' ? 'dir="ltr" lang="en"' : 'dir="rtl" lang="ar"'}>${t.footerAlt}</p>
+      </div>
+      <div>
+        <h3>${t.divisions}</h3>
+        <ul>${list(t.divLinks)}</ul>
+      </div>
+      <div>
+        <h3>${t.company}</h3>
+        <ul>${list(t.coLinks)}</ul>
+      </div>
+      <div>
+        <h3>${t.contactH}</h3>
+        <ul>
+          <li><a class="num" href="tel:+96264166660">06 416 6660</a></li>
+          <li><a href="mailto:info@dikenbros.com">info@dikenbros.com</a></li>
+          <li>${t.addr1}</li>
+          <li>${t.addr2}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© <span data-year>2026</span> ${t.copy}</p>
+      <nav aria-label="${t.legal}"><a href="terms.html">${t.terms}</a><a href="privacy.html">${t.privacy}</a></nav>
+    </div>
+  </div>
+</footer>
+<script src="${base}js/site.js" defer></script>
+</body>
+</html>
+`;
+}
+
+function parseMeta(src, file) {
+  const m = src.match(/^\s*<!--\s*meta\s*(\{[\s\S]*?\})\s*-->/);
+  if (!m) throw new Error(`Missing meta comment in ${file}`);
+  return { meta: JSON.parse(m[1]), body: src.slice(m[0].length).trim() };
+}
+
+const pages = [];
+for (const lang of ['en', 'ar']) {
+  const dir = join(ROOT, 'src', 'pages', lang);
+  if (!existsSync(dir)) continue;
+  const base = lang === 'ar' ? '../' : '';
+  for (const f of readdirSync(dir).filter((x) => x.endsWith('.html')).sort()) {
+    const name = f.replace(/\.html$/, '');
+    const { meta, body } = parseMeta(readFileSync(join(dir, f), 'utf8'), f);
+    const html = head(lang, name, meta, base) + nav(lang, name, base)
+      + body.replaceAll('{{base}}', base).replaceAll('{{updated}}', UPDATED) + '\n' + footer(lang, base);
+    const outDir = lang === 'ar' ? join(ROOT, 'ar') : ROOT;
+    mkdirSync(outDir, { recursive: true });
+    writeFileSync(join(outDir, f), html);
+    pages.push({ lang, name });
+  }
+}
+
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${pages.map(({ lang, name }) => `  <url>
+    <loc>${pageUrl(lang, name)}</loc>
+    <lastmod>${UPDATED}</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="${pageUrl('en', name)}"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="${pageUrl('ar', name)}"/>
+  </url>`).join('\n')}
+</urlset>
+`;
+writeFileSync(join(ROOT, 'sitemap.xml'), sitemap);
+console.log(`Built ${pages.length} pages + sitemap.xml`);
