@@ -7,7 +7,7 @@ Status: approved by the owner in conversation (build locally, no GitHub push yet
 
 Replace the current draft site at https://dikendelivery.com with a more professional
 version that keeps **exactly the same information** (copy, numbers, photos, logos,
-both languages) and adds **Terms of Use** and **Privacy Policy** pages.
+both languages) and adds **Terms & Conditions** and **Privacy Policy** pages.
 
 ## Constraints
 
@@ -71,7 +71,7 @@ Zarqa.", Divisions / Company / Contact columns, © 2026 Diken Bros, legal links.
 
 ## Legal pages
 
-**Terms of Use** sections: acceptance; who we are; use of the site; captain applications
+**Terms & Conditions** sections: acceptance; who we are; use of the site; captain applications
 and enquiries are not offers of employment or contracts; intellectual property; third-party
 brands and links; accuracy of information; no warranty; limitation of liability;
 indemnity; governing law (Hashemite Kingdom of Jordan, Amman courts); changes; contact.

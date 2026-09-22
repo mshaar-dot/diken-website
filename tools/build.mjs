@@ -9,20 +9,27 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://dikendelivery.com';
 const UPDATED = '2026-09-22';
 
-const NAV = {
+// Top bar: three quick links. Side menu: every page of the site, in site order.
+const TOP = {
+  en: [['delivery', 'Delivery'], ['about', 'About'], ['terms', 'Terms &amp; Conditions']],
+  ar: [['delivery', 'التوصيل'], ['about', 'من نحن'], ['terms', 'الشروط والأحكام']],
+};
+const PAGES = {
   en: [
-    ['delivery', 'Delivery'], ['distribution', 'Distribution'], ['motorcycles', 'Motorcycles'],
-    ['investments', 'Investments'], ['impact', 'Impact'], ['technology', 'Technology'], ['about', 'About'],
+    ['index', 'Home'], ['delivery', 'Delivery &amp; Logistics'], ['distribution', 'Distribution &amp; Agencies'],
+    ['motorcycles', 'Motorcycles'], ['investments', 'Investments'], ['impact', 'Impact'],
+    ['technology', 'Technology'], ['about', 'About'], ['contact', 'Contact'],
   ],
   ar: [
-    ['delivery', 'التوصيل'], ['distribution', 'التوزيع'], ['motorcycles', 'الدراجات'],
-    ['investments', 'الاستثمارات'], ['impact', 'الأثر'], ['technology', 'التقنية'], ['about', 'من نحن'],
+    ['index', 'الرئيسية'], ['delivery', 'التوصيل والخدمات اللوجستية'], ['distribution', 'التوزيع والوكالات'],
+    ['motorcycles', 'الدراجات النارية'], ['investments', 'الاستثمارات'], ['impact', 'الأثر'],
+    ['technology', 'التقنية'], ['about', 'من نحن'], ['contact', 'تواصل معنا'],
   ],
 };
 
 const T = {
   en: {
-    dir: 'ltr', skip: 'Skip to content', home: 'Diken Bros home', menu: 'Menu', main: 'Main',
+    dir: 'ltr', skip: 'Skip to content', home: 'Diken Bros home', menu: 'Menu', main: 'Main navigation',
     contact: 'Contact us', lang: 'العربية', langCode: 'ar',
     brandSmall: 'BROS · SINCE 1990',
     footerTag: 'Distribution, motorcycles, delivery and investments. Amman, Irbid and Zarqa.',
@@ -31,11 +38,11 @@ const T = {
     divLinks: [['delivery', 'Delivery & Logistics'], ['distribution', 'Distribution & Agencies'], ['motorcycles', 'Motorcycles'], ['investments', 'Investments']],
     coLinks: [['impact', 'Impact'], ['technology', 'Technology'], ['about', 'About'], ['contact', 'Contact']],
     addr1: 'Amman: Abu Alanda, Wadi Saqra, Shafa Badran', addr2: 'Irbid and Zarqa',
-    copy: 'Diken Bros. All rights reserved.', terms: 'Terms of Use', privacy: 'Privacy Policy',
-    legal: 'Legal',
+    copy: 'Diken Bros. All rights reserved.', terms: 'Terms &amp; Conditions', privacy: 'Privacy Policy',
+    legal: 'Legal', allPages: 'All pages', close: 'Close menu',
   },
   ar: {
-    dir: 'rtl', skip: 'تخطي إلى المحتوى', home: 'الصفحة الرئيسية لشركة الدكن', menu: 'القائمة', main: 'الرئيسية',
+    dir: 'rtl', skip: 'تخطي إلى المحتوى', home: 'الصفحة الرئيسية لشركة الدكن', menu: 'القائمة', main: 'التنقل الرئيسي',
     contact: 'تواصل معنا', lang: 'English', langCode: 'en',
     brandSmall: 'الدكن · منذ 1990',
     footerTag: 'التوزيع، الدراجات النارية، التوصيل والاستثمارات. عمّان وإربد والزرقاء.',
@@ -44,8 +51,8 @@ const T = {
     divLinks: [['delivery', 'التوصيل والخدمات اللوجستية'], ['distribution', 'التوزيع والوكالات'], ['motorcycles', 'الدراجات النارية'], ['investments', 'الاستثمارات']],
     coLinks: [['impact', 'الأثر'], ['technology', 'التقنية'], ['about', 'من نحن'], ['contact', 'تواصل معنا']],
     addr1: 'عمّان: أبو علندا، وادي صقرة، شفا بدران', addr2: 'إربد والزرقاء',
-    copy: 'شركة الدكن. جميع الحقوق محفوظة.', terms: 'شروط الاستخدام', privacy: 'سياسة الخصوصية',
-    legal: 'قانوني',
+    copy: 'شركة الدكن. جميع الحقوق محفوظة.', terms: 'الشروط والأحكام', privacy: 'سياسة الخصوصية',
+    legal: 'قانوني', allPages: 'كل الصفحات', close: 'إغلاق القائمة',
   },
 };
 
@@ -97,8 +104,9 @@ function head(lang, name, meta, base) {
 function nav(lang, name, base) {
   const t = T[lang];
   const altHref = lang === 'ar' ? `../${name}.html` : `ar/${name}.html`;
-  const links = NAV[lang].map(([slug, label]) =>
-    `<a href="${slug}.html"${slug === name ? ' aria-current="page"' : ''}>${label}</a>`).join('');
+  const cur = (slug) => (slug === name ? ' aria-current="page"' : '');
+  const top = TOP[lang].map(([slug, label]) => `<a href="${slug}.html"${cur(slug)}>${label}</a>`).join('');
+  const pages = PAGES[lang].map(([slug, label]) => `<li><a href="${slug}.html"${cur(slug)}>${label}</a></li>`).join('\n      ');
   return `<body>
 <a class="skip" href="#main">${t.skip}</a>
 <header class="nav" id="top">
@@ -107,14 +115,33 @@ function nav(lang, name, base) {
       <img src="${base}assets/brand/diken-d-512.png" alt="" width="40" height="40">
       <span class="brand-text"><b>DIKEN</b><small>${t.brandSmall}</small></span>
     </a>
-    <nav class="navlinks" id="navlinks" aria-label="${t.main}">
-      ${links}
+    <nav class="topnav" aria-label="${t.main}">${top}</nav>
+    <div class="nav-actions">
       <a class="lang" href="${altHref}" lang="${t.langCode}" hreflang="${t.langCode}">${t.lang}</a>
       <a class="btn primary small" href="contact.html">${t.contact}</a>
-    </nav>
-    <button class="navtoggle" type="button" aria-expanded="false" aria-controls="navlinks" aria-label="${t.menu}"><i class="ph ph-list" aria-hidden="true"></i></button>
+      <button class="navtoggle" type="button" aria-expanded="false" aria-controls="sidemenu" aria-label="${t.menu}"><i class="ph ph-list" aria-hidden="true"></i><span>${t.menu}</span></button>
+    </div>
   </div>
 </header>
+<div class="scrim" hidden></div>
+<aside class="sidemenu" id="sidemenu" aria-label="${t.allPages}" inert>
+  <div class="sidemenu-head">
+    <span class="eyebrow">${t.allPages}</span>
+    <button class="sideclose" type="button" aria-label="${t.close}"><i class="ph ph-x" aria-hidden="true"></i></button>
+  </div>
+  <nav aria-label="${t.allPages}">
+    <ol class="sidelinks">
+      ${pages}
+    </ol>
+  </nav>
+  <div class="sidemenu-foot">
+    <nav class="sidelegal" aria-label="${t.legal}"><a href="terms.html"${cur('terms')}>${t.terms}</a><a href="privacy.html"${cur('privacy')}>${t.privacy}</a></nav>
+    <div class="actions">
+      <a class="btn primary" href="contact.html">${t.contact}</a>
+      <a class="btn ghost" href="${altHref}" lang="${t.langCode}" hreflang="${t.langCode}">${t.lang}</a>
+    </div>
+  </div>
+</aside>
 <main id="main">
 `;
 }
