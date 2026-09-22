@@ -25,24 +25,24 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Diken Bros","alternateName":"شركة الدكن","url":"https://dikendelivery.com/","logo":"https://dikendelivery.com/assets/brand/diken-d-512.png","foundingDate":"1990","telephone":"+962-6-416-6660","email":"info@dikenbros.com","address":{"@type":"PostalAddress","addressLocality":"Amman","addressCountry":"JO"}}</script>
 </head><body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="nav" id="top">
+<header class="nav">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="Diken Bros home">
-      <img src="assets/brand/diken-d-512.png" alt="" width="40" height="40">
-      <span class="brand-text"><b>DIKEN</b><small>BROS · SINCE 1990</small></span>
+      <img src="assets/brand/diken-d-512.png" alt="" width="36" height="36">
+      <span>DIKEN<small>BROS · SINCE 1990</small></span>
     </a>
-    <nav class="topnav" aria-label="Main navigation"><a href="delivery.html">Delivery</a><a href="about.html">About</a><a href="terms.html" aria-current="page">Terms &amp; Conditions</a></nav>
-    <div class="nav-actions">
+    <nav class="navlinks" aria-label="Main navigation">
+      <a href="delivery.html">Delivery</a><a href="about.html">About</a>
       <a class="lang" href="ar/terms.html" lang="ar" hreflang="ar">العربية</a>
-      <a class="btn primary small" href="contact.html">Contact us</a>
-      <button class="navtoggle" type="button" aria-expanded="false" aria-controls="sidemenu" aria-label="Menu"><i class="ph ph-list" aria-hidden="true"></i><span>Menu</span></button>
-    </div>
+      <a class="btn primary" href="contact.html">Contact us</a>
+    </nav>
+    <button class="navtoggle" type="button" aria-expanded="false" aria-controls="sidemenu" aria-label="Menu"><i class="ph ph-list" aria-hidden="true"></i><span>Menu</span></button>
   </div>
 </header>
 <div class="scrim"></div>
 <aside class="sidemenu" id="sidemenu" role="dialog" aria-modal="true" aria-label="Menu" inert>
   <div class="sidemenu-head">
-    <span class="eyebrow">All pages</span>
+    <span class="patch red">All pages</span>
     <button class="sideclose" type="button" aria-label="Close menu"><i class="ph ph-x" aria-hidden="true"></i></button>
   </div>
   <nav aria-label="All pages">
@@ -60,7 +60,7 @@
   </nav>
   <div class="sidemenu-foot">
     <div class="sidelegal"><a href="terms.html" aria-current="page">Terms &amp; Conditions</a><a href="privacy.html">Privacy Policy</a></div>
-    <div class="actions">
+    <div class="cta">
       <a class="btn primary" href="contact.html">Contact us</a>
       <a class="btn ghost" href="ar/terms.html" lang="ar" hreflang="ar">العربية</a>
     </div>
@@ -69,16 +69,16 @@
 <main id="main">
 <section class="page-head plain">
   <div class="wrap">
-    <p class="eyebrow">Legal</p>
-    <h1>Terms &amp; Conditions</h1>
+    <span class="patch red">Legal</span>
+    <h1 style="margin-top:16px">Terms &amp; Conditions</h1>
     <p class="lead">These terms govern your use of this website and the enquiries you send us through it. Please read them together with our <a href="privacy.html">Privacy Policy</a>.</p>
   </div>
 </section>
 
-<section class="section">
+<section class="block">
   <div class="wrap">
     <div class="legal-grid">
-      <nav class="toc" aria-label="On this page">
+      <nav class="toc panel" aria-label="On this page">
         <b>Contents</b>
         <a href="#acceptance">Acceptance</a>
         <a href="#who">Who we are</a>
@@ -151,37 +151,44 @@
   </div>
 </section>
 </main>
-<footer class="footer">
+<footer>
   <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-brand">
-        <a class="brand" href="index.html" aria-label="Diken Bros home">
-          <img src="assets/brand/diken-d-512.png" alt="" width="40" height="40">
-          <span class="brand-text"><b>DIKEN</b><small>BROS · SINCE 1990</small></span>
-        </a>
-        <p>Distribution, motorcycles, delivery and investments. Amman, Irbid and Zarqa.</p>
-        <p class="alt" dir="rtl" lang="ar">شركة الدكن</p>
+    <div class="cols">
+      <div>
+        <a class="brand" href="index.html" aria-label="Diken Bros home"><img src="assets/brand/diken-d-512.png" alt="" width="36" height="36"><span>DIKEN<small>BROS · SINCE 1990</small></span></a>
+        <p style="margin-top:16px;max-width:36ch">Distribution, motorcycles, delivery and investments. Amman, Irbid and Zarqa.</p>
+        <p dir="rtl" lang="ar" style="margin-top:10px;color:var(--fg-3)">شركة الدكن</p>
       </div>
       <div>
         <h3>Divisions</h3>
-        <ul><li><a href="delivery.html">Delivery & Logistics</a></li><li><a href="distribution.html">Distribution & Agencies</a></li><li><a href="motorcycles.html">Motorcycles</a></li><li><a href="investments.html">Investments</a></li></ul>
+        <ul>
+          <li><a href="delivery.html">Delivery & Logistics</a></li>
+          <li><a href="distribution.html">Distribution & Agencies</a></li>
+          <li><a href="motorcycles.html">Motorcycles</a></li>
+          <li><a href="investments.html">Investments</a></li>
+        </ul>
       </div>
       <div>
         <h3>Company</h3>
-        <ul><li><a href="impact.html">Impact</a></li><li><a href="technology.html">Technology</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
+        <ul>
+          <li><a href="impact.html">Impact</a></li>
+          <li><a href="technology.html">Technology</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
       </div>
       <div>
         <h3>Contact</h3>
         <ul>
-          <li><a class="num" href="tel:+96264166660">06 416 6660</a></li>
+          <li><a href="tel:+96264166660" class="num">06 416 6660</a></li>
           <li><a href="mailto:info@dikenbros.com">info@dikenbros.com</a></li>
           <li>Amman: Abu Alanda, Wadi Saqra, Shafa Badran</li>
           <li>Irbid and Zarqa</li>
         </ul>
       </div>
     </div>
-    <div class="foot-bottom">
-      <p>© <span data-year>2026</span> Diken Bros. All rights reserved.</p>
+    <div class="base">
+      <span>© <span data-year>2026</span> Diken Bros. All rights reserved.</span>
       <nav aria-label="Legal"><a href="terms.html">Terms &amp; Conditions</a><a href="privacy.html">Privacy Policy</a></nav>
     </div>
   </div>

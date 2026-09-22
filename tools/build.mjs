@@ -9,10 +9,10 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://dikendelivery.com';
 const UPDATED = '2026-09-22';
 
-// Top bar: three quick links. Side menu: every page of the site, in site order.
+// Top bar: two quick links. Side menu: every page of the site, in site order; Terms & Conditions live in the side menu and the footer.
 const TOP = {
-  en: [['delivery', 'Delivery'], ['about', 'About'], ['terms', 'Terms &amp; Conditions']],
-  ar: [['delivery', 'التوصيل'], ['about', 'من نحن'], ['terms', 'الشروط والأحكام']],
+  en: [['delivery', 'Delivery'], ['about', 'About']],
+  ar: [['delivery', 'التوصيل'], ['about', 'من نحن']],
 };
 const PAGES = {
   en: [
@@ -109,24 +109,24 @@ function nav(lang, name, base) {
   const pages = PAGES[lang].map(([slug, label]) => `<li><a href="${slug}.html"${cur(slug)}>${label}</a></li>`).join('\n      ');
   return `<body>
 <a class="skip" href="#main">${t.skip}</a>
-<header class="nav" id="top">
+<header class="nav">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="${t.home}">
-      <img src="${base}assets/brand/diken-d-512.png" alt="" width="40" height="40">
-      <span class="brand-text"><b>DIKEN</b><small>${t.brandSmall}</small></span>
+      <img src="${base}assets/brand/diken-d-512.png" alt="" width="36" height="36">
+      <span>DIKEN<small>${t.brandSmall}</small></span>
     </a>
-    <nav class="topnav" aria-label="${t.main}">${top}</nav>
-    <div class="nav-actions">
+    <nav class="navlinks" aria-label="${t.main}">
+      ${top}
       <a class="lang" href="${altHref}" lang="${t.langCode}" hreflang="${t.langCode}">${t.lang}</a>
-      <a class="btn primary small" href="contact.html">${t.contact}</a>
-      <button class="navtoggle" type="button" aria-expanded="false" aria-controls="sidemenu" aria-label="${t.menu}"><i class="ph ph-list" aria-hidden="true"></i><span>${t.menu}</span></button>
-    </div>
+      <a class="btn primary" href="contact.html">${t.contact}</a>
+    </nav>
+    <button class="navtoggle" type="button" aria-expanded="false" aria-controls="sidemenu" aria-label="${t.menu}"><i class="ph ph-list" aria-hidden="true"></i><span>${t.menu}</span></button>
   </div>
 </header>
 <div class="scrim"></div>
 <aside class="sidemenu" id="sidemenu" role="dialog" aria-modal="true" aria-label="${t.menu}" inert>
   <div class="sidemenu-head">
-    <span class="eyebrow">${t.allPages}</span>
+    <span class="patch red">${t.allPages}</span>
     <button class="sideclose" type="button" aria-label="${t.close}"><i class="ph ph-x" aria-hidden="true"></i></button>
   </div>
   <nav aria-label="${t.allPages}">
@@ -136,7 +136,7 @@ function nav(lang, name, base) {
   </nav>
   <div class="sidemenu-foot">
     <div class="sidelegal"><a href="terms.html"${cur('terms')}>${t.terms}</a><a href="privacy.html"${cur('privacy')}>${t.privacy}</a></div>
-    <div class="actions">
+    <div class="cta">
       <a class="btn primary" href="contact.html">${t.contact}</a>
       <a class="btn ghost" href="${altHref}" lang="${t.langCode}" hreflang="${t.langCode}">${t.lang}</a>
     </div>
@@ -148,39 +148,40 @@ function nav(lang, name, base) {
 
 function footer(lang, base) {
   const t = T[lang];
-  const list = (arr) => arr.map(([s, l]) => `<li><a href="${s}.html">${l}</a></li>`).join('');
+  const list = (arr) => arr.map(([s, l]) => `<li><a href="${s}.html">${l}</a></li>`).join('\n          ');
   return `</main>
-<footer class="footer">
+<footer>
   <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-brand">
-        <a class="brand" href="index.html" aria-label="${t.home}">
-          <img src="${base}assets/brand/diken-d-512.png" alt="" width="40" height="40">
-          <span class="brand-text"><b>DIKEN</b><small>${t.brandSmall}</small></span>
-        </a>
-        <p>${t.footerTag}</p>
-        <p class="alt" ${lang === 'ar' ? 'dir="ltr" lang="en"' : 'dir="rtl" lang="ar"'}>${t.footerAlt}</p>
+    <div class="cols">
+      <div>
+        <a class="brand" href="index.html" aria-label="${t.home}"><img src="${base}assets/brand/diken-d-512.png" alt="" width="36" height="36"><span>DIKEN<small>${t.brandSmall}</small></span></a>
+        <p style="margin-top:16px;max-width:36ch">${t.footerTag}</p>
+        <p ${lang === 'ar' ? 'dir="ltr" lang="en"' : 'dir="rtl" lang="ar"'} style="margin-top:10px;color:var(--fg-3)">${t.footerAlt}</p>
       </div>
       <div>
         <h3>${t.divisions}</h3>
-        <ul>${list(t.divLinks)}</ul>
+        <ul>
+          ${list(t.divLinks)}
+        </ul>
       </div>
       <div>
         <h3>${t.company}</h3>
-        <ul>${list(t.coLinks)}</ul>
+        <ul>
+          ${list(t.coLinks)}
+        </ul>
       </div>
       <div>
         <h3>${t.contactH}</h3>
         <ul>
-          <li><a class="num" href="tel:+96264166660">06 416 6660</a></li>
+          <li><a href="tel:+96264166660" class="num">06 416 6660</a></li>
           <li><a href="mailto:info@dikenbros.com">info@dikenbros.com</a></li>
           <li>${t.addr1}</li>
           <li>${t.addr2}</li>
         </ul>
       </div>
     </div>
-    <div class="foot-bottom">
-      <p>© <span data-year>2026</span> ${t.copy}</p>
+    <div class="base">
+      <span>© <span data-year>2026</span> ${t.copy}</span>
       <nav aria-label="${t.legal}"><a href="terms.html">${t.terms}</a><a href="privacy.html">${t.privacy}</a></nav>
     </div>
   </div>

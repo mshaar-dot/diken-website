@@ -25,24 +25,24 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Diken Bros","alternateName":"شركة الدكن","url":"https://dikendelivery.com/","logo":"https://dikendelivery.com/assets/brand/diken-d-512.png","foundingDate":"1990","telephone":"+962-6-416-6660","email":"info@dikenbros.com","address":{"@type":"PostalAddress","addressLocality":"Amman","addressCountry":"JO"}}</script>
 </head><body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="nav" id="top">
+<header class="nav">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="Diken Bros home">
-      <img src="assets/brand/diken-d-512.png" alt="" width="40" height="40">
-      <span class="brand-text"><b>DIKEN</b><small>BROS · SINCE 1990</small></span>
+      <img src="assets/brand/diken-d-512.png" alt="" width="36" height="36">
+      <span>DIKEN<small>BROS · SINCE 1990</small></span>
     </a>
-    <nav class="topnav" aria-label="Main navigation"><a href="delivery.html">Delivery</a><a href="about.html">About</a><a href="terms.html">Terms &amp; Conditions</a></nav>
-    <div class="nav-actions">
+    <nav class="navlinks" aria-label="Main navigation">
+      <a href="delivery.html">Delivery</a><a href="about.html">About</a>
       <a class="lang" href="ar/index.html" lang="ar" hreflang="ar">العربية</a>
-      <a class="btn primary small" href="contact.html">Contact us</a>
-      <button class="navtoggle" type="button" aria-expanded="false" aria-controls="sidemenu" aria-label="Menu"><i class="ph ph-list" aria-hidden="true"></i><span>Menu</span></button>
-    </div>
+      <a class="btn primary" href="contact.html">Contact us</a>
+    </nav>
+    <button class="navtoggle" type="button" aria-expanded="false" aria-controls="sidemenu" aria-label="Menu"><i class="ph ph-list" aria-hidden="true"></i><span>Menu</span></button>
   </div>
 </header>
 <div class="scrim"></div>
 <aside class="sidemenu" id="sidemenu" role="dialog" aria-modal="true" aria-label="Menu" inert>
   <div class="sidemenu-head">
-    <span class="eyebrow">All pages</span>
+    <span class="patch red">All pages</span>
     <button class="sideclose" type="button" aria-label="Close menu"><i class="ph ph-x" aria-hidden="true"></i></button>
   </div>
   <nav aria-label="All pages">
@@ -60,7 +60,7 @@
   </nav>
   <div class="sidemenu-foot">
     <div class="sidelegal"><a href="terms.html">Terms &amp; Conditions</a><a href="privacy.html">Privacy Policy</a></div>
-    <div class="actions">
+    <div class="cta">
       <a class="btn primary" href="contact.html">Contact us</a>
       <a class="btn ghost" href="ar/index.html" lang="ar" hreflang="ar">العربية</a>
     </div>
@@ -68,149 +68,185 @@
 </aside>
 <main id="main">
 <section class="hero">
-  <div class="wrap">
-    <div class="hero-copy">
-      <p class="eyebrow">Diken Bros · Since 1990</p>
-      <h1>At Diken, work looks for you, and <em>no problem goes unsolved.</em></h1>
-      <p class="tagline-alt ar" dir="rtl" lang="ar">عند الدكن، الشغل بدور عليك، وما في مشكلة ما إلها حل.</p>
-      <p class="lead">A job for anyone. A better income for everyone. Four divisions, five branches, one family group since 1990.</p>
-      <div class="actions">
-        <a class="btn primary" href="contact.html">Contact us <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
-        <a class="btn ghost" href="#divisions">Our divisions</a>
-      </div>
-    </div>
-    <div class="hero-media">
-      <img src="assets/img/hero-lineup-2400.jpg" srcset="assets/img/hero-lineup-1200.jpg 1200w, assets/img/hero-lineup-2400.jpg 2400w" sizes="(max-width: 1023px) 100vw, 56vw" alt="Diken captains lined up with platform partners' riders on an Amman rooftop at dusk" fetchpriority="high" decoding="async">
+  <div class="hero-copy">
+    <h1>At Diken, work looks for you, and <em>no problem goes unsolved.</em></h1>
+    <p class="ar" dir="rtl" lang="ar">عند الدكن، الشغل بدور عليك، وما في مشكلة ما إلها حل.</p>
+    <p class="lead">A job for anyone. A better income for everyone. Four divisions, five branches, one family group since 1990.</p>
+    <div class="cta">
+      <a class="btn primary" href="contact.html">Contact us <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+      <a class="btn ghost" href="#divisions">Our divisions</a>
     </div>
   </div>
-  <div class="kpis" aria-label="Diken in numbers">
-    <div class="kpi"><b class="num red" data-count="5000" data-suffix="+">5,000+</b><span>Captains</span></div>
-    <div class="kpi"><b class="num" data-count="20000" data-suffix="+">20,000+</b><span>Orders every day</span></div>
-    <div class="kpi"><b class="num" data-count="30" data-prefix="JOD " data-suffix="M+">JOD 30M+</b><span>Cash collected yearly</span></div>
-    <div class="kpi"><b class="num" data-count="80">80</b><span>Company-owned vehicles</span></div>
-    <div class="kpi"><b class="num">1990</b><span>Founded in Amman</span></div>
+  <div class="hero-media" aria-hidden="true">
+    <img src="assets/img/hero-lineup-2400.jpg" srcset="assets/img/hero-lineup-1200.jpg 1200w, assets/img/hero-lineup-2400.jpg 2400w" sizes="(max-width: 1023px) 100vw, 56vw" alt="" fetchpriority="high" decoding="async">
+  </div>
+  <div class="hero-band">
+    <div class="tape"></div>
+    <div class="numbers" aria-label="Diken in numbers">
+      <div><b class="num red">5,000+</b><span>Captains</span></div>
+      <div><b class="num">20,000+</b><span>Orders every day</span></div>
+      <div><b class="num">JOD 30M+</b><span>Cash collected yearly</span></div>
+      <div><b class="num">80</b><span>Company-owned vehicles</span></div>
+      <div><b class="num">1990</b><span>Founded in Amman</span></div>
+    </div>
   </div>
 </section>
 
-<section class="section" id="divisions">
+<section class="block" id="divisions">
   <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow">Our divisions</p>
+    <div class="head reveal">
       <h2>Four divisions, one group.</h2>
       <p class="lead">Diken started with spare parts for multinationals and grew into the fleet, the agencies and the investments below. Each one opens to its own page.</p>
     </div>
     <div class="doors">
-      <a class="door reveal" href="delivery.html">
-        <img src="assets/img/photos/swap-scooter-tall.jpg" alt="" loading="lazy" decoding="async">
-        <span class="kicker red">Delivery &amp; Logistics</span>
-        <h3>5,000+ captains, five branches, 20,000 orders a day.</h3>
-        <p>The fleet behind Talabat, Careem, HungerStation and noon across Jordan, with 80 company-owned vehicles.</p>
-        <span class="go">How we deliver <i class="ph ph-arrow-right" aria-hidden="true"></i></span>
+      <a class="panel door reveal" href="delivery.html" style="background-image:url('assets/img/photos/swap-scooter-tall.jpg');background-position:55% 50%">
+        <span class="patch red">Delivery &amp; Logistics</span>
+        <div>
+          <h3>5,000+ captains, five branches, 20,000 orders a day.</h3>
+          <p>The fleet behind Talabat, Careem, HungerStation and noon across Jordan, with 80 company-owned vehicles.</p>
+          <span class="go">How we deliver <i class="ph ph-arrow-right" aria-hidden="true"></i></span>
+        </div>
       </a>
-      <a class="door reveal d1" href="distribution.html">
-        <img src="assets/img/photos/motul-billboard-wide.jpg" alt="" loading="lazy" decoding="async">
-        <span class="kicker">Distribution &amp; Agencies</span>
-        <h3>Motul, Wabco and BPW, exclusively in Jordan.</h3>
-        <p>Three decades of spare-parts supply to multinationals, now three exclusive agency agreements.</p>
-        <span class="go">See our brands <i class="ph ph-arrow-right" aria-hidden="true"></i></span>
+      <a class="panel door reveal" href="distribution.html">
+        <span class="patch">Distribution &amp; Agencies</span>
+        <div>
+          <h3>Motul, Wabco and BPW, exclusively in Jordan.</h3>
+          <p>Three decades of spare-parts supply to multinationals, now three exclusive agency agreements.</p>
+          <span class="go">See our brands <i class="ph ph-arrow-right" aria-hidden="true"></i></span>
+        </div>
       </a>
-      <a class="door reveal" href="motorcycles.html">
-        <img src="assets/img/photos/showroom-wide.jpg" alt="" loading="lazy" decoding="async">
-        <span class="kicker">Motorcycles</span>
-        <h3>Hero and SYM agents in Jordan.</h3>
-        <p>Two-wheelers for riders and fleets, with parts and service behind them.</p>
-        <span class="go">Explore the range <i class="ph ph-arrow-right" aria-hidden="true"></i></span>
+      <a class="panel door reveal" href="motorcycles.html">
+        <span class="patch">Motorcycles</span>
+        <div>
+          <h3>Hero and SYM agents in Jordan.</h3>
+          <p>Two-wheelers for riders and fleets, with parts and service behind them.</p>
+          <span class="go">Explore the range <i class="ph ph-arrow-right" aria-hidden="true"></i></span>
+        </div>
       </a>
-      <a class="door reveal d1" href="investments.html">
-        <img src="assets/img/photos/swap-scooter.jpg" alt="" loading="lazy" decoding="async">
-        <span class="kicker">Investments</span>
-        <h3>Samhouri &amp; Diken and Areena.</h3>
-        <p>Half of a leading insulation supplier, a quarter of Jordan's first battery-swap scooter network.</p>
-        <span class="go">Our portfolio <i class="ph ph-arrow-right" aria-hidden="true"></i></span>
+      <a class="panel door reveal" href="investments.html">
+        <span class="patch">Investments</span>
+        <div>
+          <h3>Samhouri &amp; Diken and Areena.</h3>
+          <p>Half of a leading insulation supplier, a quarter of Jordan's first battery-swap scooter network.</p>
+          <span class="go">Our portfolio <i class="ph ph-arrow-right" aria-hidden="true"></i></span>
+        </div>
       </a>
-      <a class="door reveal d2" href="technology.html">
-        <img src="assets/img/photos/branch-wide.jpg" alt="" loading="lazy" decoding="async">
-        <span class="kicker">Technology</span>
-        <h3>An operation that runs on AI.</h3>
-        <p>Agents for dispatch, cash collection, partner orders, content and reporting.</p>
-        <span class="go">How we work <i class="ph ph-arrow-right" aria-hidden="true"></i></span>
+      <a class="panel door reveal" href="technology.html">
+        <span class="patch">Technology</span>
+        <div>
+          <h3>An operation that runs on AI.</h3>
+          <p>Agents for dispatch, cash collection, partner orders, content and reporting.</p>
+          <span class="go">How we work <i class="ph ph-arrow-right" aria-hidden="true"></i></span>
+        </div>
       </a>
     </div>
   </div>
 </section>
 
-<section class="section">
+<div class="tape"></div>
+
+<section class="block">
   <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow">Our story</p>
+    <div class="head reveal">
       <h2>Thirty-five years, one direction.</h2>
     </div>
-    <ol class="timeline cols reveal">
-      <li><span class="when num">1990</span><h3>Founded in Amman</h3><p>Spare-parts supply and distribution for multinational companies.</p></li>
-      <li><span class="when num">2019</span><h3>Delivery begins</h3><p>A delivery company built for Talabat and Careem.</p></li>
-      <li><span class="when">Regional growth</span><h3>Riyadh and Dubai, built and sold</h3><p>Diken built delivery operations in Saudi Arabia and the UAE from scratch and sold both as going concerns.</p></li>
-      <li><span class="when">Today</span><h3>5,000+ captains</h3><p>Five exclusive agencies, two investments, the first swap scooter in Jordan and an AI-run operation.</p></li>
-    </ol>
+    <div class="timeline reveal">
+      <div>
+        <span class="patch red num">1990</span>
+        <h3>Founded in Amman</h3>
+        <p>Spare-parts supply and distribution for multinational companies.</p>
+      </div>
+      <div>
+        <span class="patch num">2019</span>
+        <h3>Delivery begins</h3>
+        <p>A delivery company built for Talabat and Careem.</p>
+      </div>
+      <div>
+        <span class="patch">Regional growth</span>
+        <h3>Riyadh and Dubai, built and sold</h3>
+        <p>Diken built delivery operations in Saudi Arabia and the UAE from scratch and sold both as going concerns.</p>
+      </div>
+      <div>
+        <span class="patch">Today</span>
+        <h3>5,000+ captains</h3>
+        <p>Five exclusive agencies, two investments, the first swap scooter in Jordan and an AI-run operation.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="section" id="impact">
+<section class="block" id="impact">
   <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow">Impact</p>
+    <div class="head reveal">
       <h2>Work that finds you. Income that grows with you.</h2>
       <p class="lead">Four things Diken did first in Jordan's delivery economy.</p>
     </div>
     <div class="firsts">
-      <div class="feature reveal">
-        <img src="assets/img/photos/fleet-tall.jpg" alt="Diken captains lined up with their motorcycles" loading="lazy" decoding="async">
+      <div class="panel photo reveal" style="background-image:url('assets/img/photos/fleet-tall.jpg');background-position:50% 72%">
         <div>
           <h3>Captains, not just riders.</h3>
-          <p>Social security with the Ministry of Labour for full-time captains, and 80 company-owned vehicles for anyone who wants delivery as a full-time job without owning a vehicle.</p>
-          <div class="actions"><a class="btn light" href="impact.html">Our impact <i class="ph ph-arrow-right" aria-hidden="true"></i></a></div>
+          <p style="margin-top:8px;color:var(--fg-2);max-width:40ch">Social security with the Ministry of Labour for full-time captains, and 80 company-owned vehicles for anyone who wants delivery as a full-time job without owning a vehicle.</p>
+          <a class="btn light" style="margin-top:20px" href="impact.html">Our impact</a>
         </div>
       </div>
-      <div class="card reveal"><span class="k num">1st</span><h3>To onboard captains with disabilities</h3><p>With Talabat, working conditions built so people with disabilities can earn safely and steadily.</p></div>
-      <div class="card reveal d1"><span class="k num">1st</span><h3>To onboard women captains</h3><p>Women earn on the road with Diken, with the same support and the same pay.</p></div>
-      <div class="card reveal d1"><span class="k num">1st</span><h3>Zero down payment, zero interest</h3><p>With Microfund for Women, financing for people with no vehicle and no job, so a job can start on day one.</p></div>
-      <div class="card reveal d2"><span class="k num">1st</span><h3>Electric scooter with battery swapping</h3><p>Through Areena, Jordan's first swap scooter, with a Talabat-sponsored incentive. Swap, don't wait.</p></div>
+      <div class="panel first reveal">
+        <span class="k num">1st</span>
+        <h3>To onboard captains with disabilities</h3>
+        <p>With Talabat, working conditions built so people with disabilities can earn safely and steadily.</p>
+      </div>
+      <div class="panel first reveal">
+        <span class="k num">1st</span>
+        <h3>To onboard women captains</h3>
+        <p>Women earn on the road with Diken, with the same support and the same pay.</p>
+      </div>
+      <div class="panel first reveal">
+        <span class="k num">1st</span>
+        <h3>Zero down payment, zero interest</h3>
+        <p>With Microfund for Women, financing for people with no vehicle and no job, so a job can start on day one.</p>
+      </div>
+      <div class="panel first reveal">
+        <span class="k num">1st</span>
+        <h3>Electric scooter with battery swapping</h3>
+        <p>Through Areena, Jordan's first swap scooter, with a Talabat-sponsored incentive. Swap, don't wait.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="technology">
+<div class="tape red"></div>
+
+<section class="block" id="technology">
   <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow">Technology</p>
+    <div class="head reveal">
       <h2>An operation that runs on AI.</h2>
       <p class="lead">Agents handle the daily work of a 5,000-captain fleet, with people on every escalation.</p>
     </div>
     <div class="flow">
       <div class="flow-list">
-        <div class="card reveal"><span class="icon"><i class="ph ph-truck" aria-hidden="true"></i></span><div><h3>Operations and collection</h3><p>An agent supports dispatch and the daily reconciliation of cash collected on delivery.</p></div></div>
-        <div class="card reveal d1"><span class="icon"><i class="ph ph-chats-circle" aria-hidden="true"></i></span><div><h3>Partner orders with Careem</h3><p>Integrated with Careem to coordinate orders for leading quick-service restaurant brands, through a verified chat agent and a voice agent that escalate to people.</p></div></div>
-        <div class="card reveal d2"><span class="icon"><i class="ph ph-megaphone" aria-hidden="true"></i></span><div><h3>Content and ads</h3><p>AI-generated social content and ad analysis for every brand in the group.</p></div></div>
-        <div class="card reveal d3"><span class="icon"><i class="ph ph-chart-line-up" aria-hidden="true"></i></span><div><h3>Finance and sales reports</h3><p>AI-assisted reporting so managers read the numbers the morning after, not the month after.</p></div></div>
+        <div class="panel reveal"><i class="ph ph-truck" aria-hidden="true"></i><div><h3>Operations and collection</h3><p>An agent supports dispatch and the daily reconciliation of cash collected on delivery.</p></div></div>
+        <div class="panel reveal"><i class="ph ph-chats-circle" aria-hidden="true"></i><div><h3>Partner orders with Careem</h3><p>Integrated with Careem to coordinate orders for leading quick-service restaurant brands, through a verified chat agent and a voice agent that escalate to people.</p></div></div>
+        <div class="panel reveal"><i class="ph ph-megaphone" aria-hidden="true"></i><div><h3>Content and ads</h3><p>AI-generated social content and ad analysis for every brand in the group.</p></div></div>
+        <div class="panel reveal"><i class="ph ph-chart-line-up" aria-hidden="true"></i><div><h3>Finance and sales reports</h3><p>AI-assisted reporting so managers read the numbers the morning after, not the month after.</p></div></div>
       </div>
-      <div class="card diagram reveal d1">
+      <div class="panel diagram reveal">
         <svg viewBox="0 0 520 300" role="img" aria-labelledby="flow-t">
           <title id="flow-t">How a partner order moves: order in, chat agent, voice agent, then a person if needed.</title>
           <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#ed1c26"/></marker></defs>
-          <g font-family="Alexandria, sans-serif" font-size="13" fill="#f5f5f3">
-            <rect x="16" y="24" width="150" height="56" rx="6" fill="#1a1a1d" stroke="rgba(255,255,255,.22)"/>
+          <g font-family="Alexandria, sans-serif" font-size="13" fill="#f4f4f2">
+            <rect x="16" y="24" width="150" height="56" rx="6" fill="#1b1b1e" stroke="rgba(255,255,255,.24)"/>
             <text x="91" y="48" text-anchor="middle" font-weight="600">Careem order</text>
-            <text x="91" y="66" text-anchor="middle" fill="rgba(245,245,243,.6)" font-size="11">restaurant partner</text>
-            <rect x="16" y="122" width="150" height="56" rx="6" fill="#1a1a1d" stroke="rgba(255,255,255,.22)"/>
+            <text x="91" y="66" text-anchor="middle" fill="rgba(244,244,242,.6)" font-size="11">restaurant partner</text>
+            <rect x="16" y="122" width="150" height="56" rx="6" fill="#1b1b1e" stroke="rgba(255,255,255,.24)"/>
             <text x="91" y="146" text-anchor="middle" font-weight="600">Chat agent</text>
-            <text x="91" y="164" text-anchor="middle" fill="rgba(245,245,243,.6)" font-size="11">verified, confirms details</text>
-            <rect x="16" y="220" width="150" height="56" rx="6" fill="#1a1a1d" stroke="rgba(255,255,255,.22)"/>
+            <text x="91" y="164" text-anchor="middle" fill="rgba(244,244,242,.6)" font-size="11">verified, confirms details</text>
+            <rect x="16" y="220" width="150" height="56" rx="6" fill="#1b1b1e" stroke="rgba(255,255,255,.24)"/>
             <text x="91" y="244" text-anchor="middle" font-weight="600">Voice agent</text>
-            <text x="91" y="262" text-anchor="middle" fill="rgba(245,245,243,.6)" font-size="11">calls captain or store</text>
+            <text x="91" y="262" text-anchor="middle" fill="rgba(244,244,242,.6)" font-size="11">calls captain or store</text>
             <rect x="354" y="122" width="150" height="56" rx="6" fill="#ed1c26"/>
             <text x="429" y="146" text-anchor="middle" font-weight="800" fill="#fff">A person</text>
             <text x="429" y="164" text-anchor="middle" fill="rgba(255,255,255,.85)" font-size="11">every escalation</text>
             <rect x="200" y="24" width="120" height="252" rx="6" fill="none" stroke="rgba(255,255,255,.14)" stroke-dasharray="6 6"/>
-            <text x="260" y="150" text-anchor="middle" fill="rgba(245,245,243,.6)" font-size="11" transform="rotate(-90 260 150)">Diken operations</text>
+            <text x="260" y="150" text-anchor="middle" fill="rgba(244,244,242,.6)" font-size="11" transform="rotate(-90 260 150)">Diken operations</text>
             <path d="M91 80V122" stroke="#ed1c26" stroke-width="2" marker-end="url(#arr)"/>
             <path d="M91 178V220" stroke="#ed1c26" stroke-width="2" marker-end="url(#arr)"/>
             <path d="M166 150H354" stroke="#ed1c26" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arr)"/>
@@ -223,82 +259,88 @@
   </div>
 </section>
 
-<section class="section" id="partners">
+<section class="block" id="partners">
   <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow">Partners</p>
+    <div class="head reveal">
       <h2>Who we work with.</h2>
       <p class="lead">Partners in delivery, restaurants, vehicles, parts, finance and energy.</p>
     </div>
-    <div class="logos reveal" aria-label="Partners">
-      <div class="logo"><img src="assets/logos/talabat.svg" alt="Talabat" loading="lazy"></div>
-      <div class="logo"><img src="assets/logos/careem.svg" alt="Careem" loading="lazy"></div>
-      <div class="logo"><img src="assets/logos/hungerstation.svg" alt="HungerStation" loading="lazy"></div>
-      <div class="logo"><img src="assets/logos/noon.svg" alt="noon" loading="lazy"></div>
-      <div class="logo"><img src="assets/logos/mcdonalds.svg" alt="McDonald's" loading="lazy"></div>
-      <div class="logo"><img src="assets/logos/americana.svg" alt="Americana Restaurants" loading="lazy"></div>
-      <div class="logo"><img src="assets/logos/hero.svg" alt="Hero" loading="lazy"></div>
-      <div class="logo"><img src="assets/logos/sym.svg" alt="SYM" loading="lazy"></div>
-      <div class="logo"><img src="assets/logos/motul.svg" alt="Motul" loading="lazy"></div>
-      <div class="logo"><img src="assets/logos/wabco.svg" alt="WABCO" loading="lazy"></div>
-      <div class="logo"><img src="assets/logos/bpw.png" alt="BPW" loading="lazy"></div>
-      <div class="logo"><img src="assets/logos/totalenergies.svg" alt="TotalEnergies" loading="lazy"></div>
-      <div class="logo" aria-label="Blue Shark"><span class="bs"><img src="assets/logos/blueshark-mark.svg" alt="" loading="lazy"><b>blueshark</b></span></div>
-      <div class="logo"><img src="assets/logos/microfund.png" alt="Microfund for Women" loading="lazy"></div>
-      <div class="logo"><img src="assets/logos/reflect.png" alt="Reflect" loading="lazy"></div>
-      <div class="logo"><img src="assets/logos/bank-al-etihad.jpg" alt="Bank al Etihad" loading="lazy"></div>
-      <div class="logo"><img src="assets/logos/jordan-commercial-bank.jpg" alt="Jordan Commercial Bank" loading="lazy"></div>
-      <div class="logo"><img src="assets/logos/manaseer.svg" alt="Manaseer Group" loading="lazy"></div>
+    <div class="partners reveal" aria-label="Partners">
+<div class="partner"><img src="assets/logos/talabat.svg" alt="Talabat"></div>
+<div class="partner"><img src="assets/logos/careem.svg" alt="Careem"></div>
+<div class="partner"><img src="assets/logos/hungerstation.svg" alt="HungerStation"></div>
+<div class="partner"><img src="assets/logos/noon.svg" alt="noon"></div>
+<div class="partner"><img src="assets/logos/mcdonalds.svg" alt="McDonald's"></div>
+<div class="partner"><img src="assets/logos/americana.svg" alt="Americana Restaurants"></div>
+<div class="partner"><img src="assets/logos/hero.svg" alt="Hero"></div>
+<div class="partner"><img src="assets/logos/sym.svg" alt="SYM"></div>
+<div class="partner"><img src="assets/logos/motul.svg" alt="Motul"></div>
+<div class="partner"><img src="assets/logos/wabco.svg" alt="WABCO"></div>
+<div class="partner"><img src="assets/logos/bpw.png" alt="BPW"></div>
+<div class="partner"><img src="assets/logos/totalenergies.svg" alt="TotalEnergies"></div>
+<div class="partner" aria-label="Blue Shark"><span class="bs"><img src="assets/logos/blueshark-mark.svg" alt=""><b>blueshark</b></span></div>
+<div class="partner"><img src="assets/logos/microfund.png" alt="Microfund for Women"></div>
+<div class="partner"><img src="assets/logos/reflect.png" alt="Reflect"></div>
+<div class="partner"><img src="assets/logos/bank-al-etihad.jpg" alt="Bank al Etihad"></div>
+<div class="partner"><img src="assets/logos/jordan-commercial-bank.jpg" alt="Jordan Commercial Bank"></div>
+<div class="partner"><img src="assets/logos/manaseer.svg" alt="Manaseer Group"></div>
     </div>
   </div>
 </section>
 
-<section class="section tight">
+<section class="block tight">
   <div class="wrap">
-    <div class="cta-band reveal">
+    <div class="panel red contact-band reveal">
       <div>
         <h2>Talk to Diken.</h2>
         <p>Partnerships, agencies, fleet capacity. Five branches across Jordan. One message reaches the right person.</p>
       </div>
-      <div class="actions">
+      <div class="cta">
         <a class="btn light" href="contact.html">Contact us <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
-        <a class="btn ghost num" href="tel:+96264166660"><i class="ph ph-phone" aria-hidden="true"></i> 06 416 6660</a>
+        <a class="btn ghost num" style="border-color:rgba(255,255,255,.6);color:#fff" href="tel:+96264166660"><i class="ph ph-phone" aria-hidden="true"></i> 06 416 6660</a>
       </div>
     </div>
   </div>
 </section>
 </main>
-<footer class="footer">
+<footer>
   <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-brand">
-        <a class="brand" href="index.html" aria-label="Diken Bros home">
-          <img src="assets/brand/diken-d-512.png" alt="" width="40" height="40">
-          <span class="brand-text"><b>DIKEN</b><small>BROS · SINCE 1990</small></span>
-        </a>
-        <p>Distribution, motorcycles, delivery and investments. Amman, Irbid and Zarqa.</p>
-        <p class="alt" dir="rtl" lang="ar">شركة الدكن</p>
+    <div class="cols">
+      <div>
+        <a class="brand" href="index.html" aria-label="Diken Bros home"><img src="assets/brand/diken-d-512.png" alt="" width="36" height="36"><span>DIKEN<small>BROS · SINCE 1990</small></span></a>
+        <p style="margin-top:16px;max-width:36ch">Distribution, motorcycles, delivery and investments. Amman, Irbid and Zarqa.</p>
+        <p dir="rtl" lang="ar" style="margin-top:10px;color:var(--fg-3)">شركة الدكن</p>
       </div>
       <div>
         <h3>Divisions</h3>
-        <ul><li><a href="delivery.html">Delivery & Logistics</a></li><li><a href="distribution.html">Distribution & Agencies</a></li><li><a href="motorcycles.html">Motorcycles</a></li><li><a href="investments.html">Investments</a></li></ul>
+        <ul>
+          <li><a href="delivery.html">Delivery & Logistics</a></li>
+          <li><a href="distribution.html">Distribution & Agencies</a></li>
+          <li><a href="motorcycles.html">Motorcycles</a></li>
+          <li><a href="investments.html">Investments</a></li>
+        </ul>
       </div>
       <div>
         <h3>Company</h3>
-        <ul><li><a href="impact.html">Impact</a></li><li><a href="technology.html">Technology</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
+        <ul>
+          <li><a href="impact.html">Impact</a></li>
+          <li><a href="technology.html">Technology</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
       </div>
       <div>
         <h3>Contact</h3>
         <ul>
-          <li><a class="num" href="tel:+96264166660">06 416 6660</a></li>
+          <li><a href="tel:+96264166660" class="num">06 416 6660</a></li>
           <li><a href="mailto:info@dikenbros.com">info@dikenbros.com</a></li>
           <li>Amman: Abu Alanda, Wadi Saqra, Shafa Badran</li>
           <li>Irbid and Zarqa</li>
         </ul>
       </div>
     </div>
-    <div class="foot-bottom">
-      <p>© <span data-year>2026</span> Diken Bros. All rights reserved.</p>
+    <div class="base">
+      <span>© <span data-year>2026</span> Diken Bros. All rights reserved.</span>
       <nav aria-label="Legal"><a href="terms.html">Terms &amp; Conditions</a><a href="privacy.html">Privacy Policy</a></nav>
     </div>
   </div>

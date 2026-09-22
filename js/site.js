@@ -50,7 +50,7 @@
   }
 
   /* Scroll reveals */
-  var targets = document.querySelectorAll('.reveal');
+  var targets = document.querySelectorAll('.reveal, .numbers');
   if (!reduce && 'IntersectionObserver' in window && targets.length) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
@@ -114,7 +114,7 @@
         status.textContent = isAr
           ? 'فتحنا رسالة جاهزة في تطبيق البريد لديك. إن لم تُفتح، راسلنا مباشرة على info@dikenbros.com.'
           : 'We opened a ready-to-send email in your mail app. If nothing opened, write to info@dikenbros.com directly.';
-        status.classList.add('show');
+        status.classList.add('show'); status.classList.add('ok');
       }
       window.location.href = href;
     });
