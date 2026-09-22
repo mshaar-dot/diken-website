@@ -134,7 +134,7 @@ p { margin: 0; }
 .navlinks .btn { min-height: 40px; padding: 0 16px; font-size: 14px; margin-left: 8px; }
 .navtoggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line-strong); background: transparent; color: #fff; border-radius: 4px; font-size: 22px; align-items: center; justify-content: center; cursor: pointer; }
 .navtoggle:active { transform: scale(0.96); }
-@media (max-width: 1023px) {
+@media (max-width: 1199px) {
   /* No backdrop blur on phones: it would make the header the containing block for the fixed menu panel. */
   .nav { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--ink); }
   .navlinks {
@@ -388,12 +388,12 @@ html.review .page-head { min-height: 560px; }
 [dir="rtl"] .num, [dir="rtl"] .numbers b { direction: ltr; unicode-bidi: isolate; }
 [dir="rtl"] .steps > div::before { direction: ltr; }
 [dir="rtl"] .diagram, [dir="rtl"] .partner { direction: ltr; }
-@media (max-width: 1023px) {
+@media (max-width: 1199px) {
   [dir="rtl"] .navlinks a[aria-current="page"] { box-shadow: inset -3px 0 0 var(--red); padding-left: 4px; padding-right: 14px; }
 }
 .navlinks .lang { font-weight: 600; color: var(--fg); border: 1px solid var(--line-strong); border-radius: 4px; padding: 8px 12px; margin-inline-start: 6px; }
 .navlinks .lang:hover { border-color: #fff; }
-@media (max-width: 1023px) { .navlinks .lang { border: 0; border-bottom: 1px solid var(--line); border-radius: 0; padding: 16px 4px; margin: 0; } }
+@media (max-width: 1199px) { .navlinks .lang { border: 0; border-bottom: 1px solid var(--line); border-radius: 0; padding: 16px 4px; margin: 0; } }
 
 /* ── Additions to the original stylesheet: footer legal links, contact-form status, legal pages. ── */
 footer .base nav { display: flex; gap: 20px; }
@@ -416,3 +416,10 @@ form.contact .status.show { display: block; background: rgba(202,255,0,0.1); bor
 .prose strong { color: var(--fg); }
 .prose .updated { font-size: 14px; color: var(--fg-3); margin-bottom: 36px; }
 @media (max-width: 900px) { .legal-grid { grid-template-columns: 1fr; } .toc { position: static; } }
+
+/* With Terms & Conditions added after About, the row needs a little less air just above the drawer breakpoint. */
+@media (min-width: 1200px) and (max-width: 1359px) {
+  .navlinks a { padding: 10px 8px; font-size: 13.5px; }
+  .navlinks .lang { padding: 8px 10px; }
+  .navlinks .btn { padding: 0 14px; }
+}

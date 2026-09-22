@@ -19,7 +19,7 @@
     toggle.addEventListener('click', function () { setNav(links.getAttribute('data-open') !== 'true'); });
     links.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setNav(false); }); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && links.getAttribute('data-open') === 'true') { setNav(false); toggle.focus(); } });
-    window.matchMedia('(min-width: 1024px)').addEventListener('change', function (m) { if (m.matches) setNav(false); });
+    window.matchMedia('(min-width: 1200px)').addEventListener('change', function (m) { if (m.matches) setNav(false); });
   }
 
   /* Scroll reveals */
