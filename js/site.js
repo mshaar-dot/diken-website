@@ -38,7 +38,8 @@
       if (e.key === 'Tab') {
         var items = menu.querySelectorAll('a[href], button:not([disabled])');
         var firstEl = items[0], lastEl = items[items.length - 1];
-        if (e.shiftKey && document.activeElement === firstEl) { e.preventDefault(); lastEl.focus(); }
+        if (!menu.contains(document.activeElement)) { e.preventDefault(); firstEl.focus(); }
+        else if (e.shiftKey && document.activeElement === firstEl) { e.preventDefault(); lastEl.focus(); }
         else if (!e.shiftKey && document.activeElement === lastEl) { e.preventDefault(); firstEl.focus(); }
       }
     });
